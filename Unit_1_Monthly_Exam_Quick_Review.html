@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1 | Quick Monthly Exam Review</title>
+  <style>
+    :root { --navy:#102a43; --blue:#1f6f8b; --green:#36b37e; --pale:#edf7f5; --ink:#243b53; --line:#d9e2ec; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial, sans-serif; color:var(--ink); background:#f5f8fb; line-height:1.55; }
+    header { background:linear-gradient(135deg,var(--navy),#164e63); color:#fff; padding:42px 20px; text-align:center; }
+    h1 { margin:0; font-size:clamp(1.8rem,4vw,2.8rem); } header p { max-width:700px; margin:12px auto 0; color:#d9f3ea; }
+    main { max-width:980px; margin:28px auto 50px; padding:0 18px; }
+    .note { background:#fff8d6; border-left:5px solid #e7b416; padding:14px 18px; border-radius:8px; }
+    .models { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:24px 0; }
+    .model-btn { border:0; border-radius:12px; background:#fff; padding:20px; text-align:left; cursor:pointer; box-shadow:0 4px 16px #102a4314; color:var(--navy); font-size:1rem; border:2px solid transparent; }
+    .model-btn:hover,.model-btn.active { border-color:var(--green); background:var(--pale); } .model-btn strong { display:block; font-size:1.18rem; margin-bottom:4px; }
+    #paper { display:none; background:#fff; border-radius:14px; padding:26px; box-shadow:0 4px 16px #102a4312; }
+    #paper.show { display:block; }
+    .exam-head { border-bottom:2px solid var(--line); padding-bottom:14px; margin-bottom:22px; }
+    .exam-head h2 { margin:0; color:var(--navy); } .marks { color:var(--blue); font-weight:bold; }
+    .section { margin:25px 0; padding:16px; border:1px solid var(--line); border-radius:10px; }
+    .section h3 { margin:0 0 8px; color:var(--blue); }
+    .q { margin:17px 0; padding:13px; border-radius:8px; background:#fafcfe; } .q p { margin:0 0 9px; font-weight:600; }
+    label { display:block; padding:4px 0; cursor:pointer; } input[type="text"] { width:min(100%,430px); padding:10px; border:1px solid #9fb3c8; border-radius:6px; font-size:1rem; }
+    button.check { background:var(--green); border:0; color:#fff; padding:12px 22px; border-radius:7px; font-size:1rem; cursor:pointer; font-weight:bold; }
+    #result { margin-top:16px; padding:16px; border-radius:8px; display:none; font-weight:bold; } .correct { background:#e7f7ef; border-left:4px solid var(--green); } .wrong { background:#fff0f0; border-left:4px solid #d64545; }
+    .answer { display:none; margin-top:8px; color:#176b4d; font-weight:bold; } .answer.show { display:block; }
+    .small { font-size:.93rem; color:#526d82; } footer { text-align:center; color:#627d98; padding:20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unit 1 — Quick Monthly Exam Review</h1>
+    <p>Programming and Artificial Intelligence - 2nd Baccalaureate  </p>
+  </header>
+  <main>
+   
+    <section class="models">
+      <button class="model-btn" onclick="openModel('A',this)"><strong>Model A</strong>IT development and digital transformation</button>
+      <button class="model-btn" onclick="openModel('B',this)"><strong>Model B</strong>Artificial Intelligence and applications</button>
+      <button class="model-btn" onclick="openModel('C',this)"><strong>Model C</strong>Responsible AI and key cractice models based on the unit content and the monthly-exam format.oncepts</button>
+    </section>
+    <section id="paper"></section>
+  </main>
+  <footer>Practice first, then check your answers and revise the terms you missed.</footer>
+  <script>
+    const models={
+      A:{title:'Model A — IT Development',mcq:[['Which development is associated with the 1990s?',['Personal computers became common','The World Wide Web appeared and Internet use expanded','Cloud computing became widespread','Quantum computers became commercial'],1],['According to Moore’s Law, the number of transistors approximately:',['doubles every two years','halves every two years','never changes','doubles every ten years'],0],['Which technology provides computing resources as services through the Internet?',['Cloud computing','Cashless payment','Virtual reality','Face recognition'],0],['Which term describes working from home using Internet tools?',['Remote work','E-commerce','Machine translation','Predictive maintenance'],0],['A payment using electronic money or a QR code is called:',['cashless payment','quantum payment','cloud payment','edge payment'],0]],fill:[['The buying and selling of goods and services through the Internet is called _____.','e-commerce'],['A computer unit that can represent a mixture of 0 and 1 is a _____.','qubit']],terms:[['The rule stating that the number of transistors in integrated circuits approximately doubles every two years.','Moore’s Law'],['Using the Internet to deliver lessons and study materials.','Online learning']]},
+      B:{title:'Model B — AI and Applications',mcq:[['Machine learning enables systems to:',['learn patterns from data','work without data','replace the Internet','use only fixed rules'],0],['Deep learning mainly uses:',['neural networks','paper records','QR codes','cash only'],0],['Which is an example of generative AI?',['An AI that creates an image','A calculator','A keyboard','A barcode reader'],0],['AI that predicts a machine failure before it happens is called:',['predictive maintenance','machine translation','cashless payment','remote work'],0],['Which application translates a text from one language to another?',['Machine translation','Face recognition','Recommendation system','Virtual reality'],0]],fill:[['AI that creates new text, images, or audio is called _____ AI.','generative'],['A system that recognizes speech and performs spoken commands is a voice _____.','assistant']],terms:[['The broad field of technologies that perform intelligent human-like tasks.','Artificial Intelligence'],['An advanced branch of machine learning that uses neural networks and large amounts of data.','Deep Learning']]},
+      C:{title:'Model C — Responsible AI',mcq:[['Using personal information carefully and protecting it relates to:',['Privacy protection','Fairness','Accountability','Moore’s Law'],0],['Not unjustly discriminating against a person or group is:',['fairness','cloud computing','e-commerce','automation'],0],['Being answerable for an AI decision means:',['accountability','privacy','virtual reality','edge computing'],0],['An AI result that sounds believable but is not true is called:',['a hallucination','a qubit','a cloud','a transistor'],0],['Which task still needs human judgment?',['Making ethical decisions','Finding patterns in data','Classifying images','Recognizing speech'],0]],fill:[['Bias caused by unfair or incomplete training data is algorithmic _____.','bias'],['Explainable Artificial Intelligence is abbreviated as _____.','XAI']],terms:[['The difficulty of understanding how an AI system reached a decision.','Black-box problem'],['Showing clearly how an AI system makes or reaches a decision.','Transparency']]}
+    };
+    function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+    function openModel(key,btn){document.querySelectorAll('.model-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const m=models[key];let n=0,html=`<div class="exam-head"><h2>${m.title}</h2><p class="marks">Total: 22 marks · Multiple Choice: 10 · Complete: 6 · Scientific Term: 6</p><p class="small">Choose the best answer. Type short, accurate answers for the remaining questions.</p></div><form id="quiz">`;
+      html+='<div class="section"><h3>Question 1: Choose the correct answer. (5 × 2 = 10 marks)</h3>';
+      m.mcq.forEach((x,i)=>{n++;html+=`<div class="q" data-answer="${x[2]}"><p>${n}. ${x[0]}</p>${x[1].map((o,j)=>`<label><input type="radio" name="q${n}" value="${j}"> ${j+1}) ${o}</label>`).join('')}<div class="answer">Correct answer: ${x[1][x[2]]}</div></div>`});html+='</div>';
+      html+='<div class="section"><h3>Question 2 (A): Complete the following. (2 × 3 = 6 marks)</h3>';
+      m.fill.forEach(x=>{n++;html+=`<div class="q" data-answer="${esc(x[1])}"><p>${n}. ${x[0]}</p><input type="text" name="q${n}"><div class="answer">Model answer: ${x[1]}</div></div>`});html+='</div>';
+      html+='<div class="section"><h3>Question 2 (B): Write the scientific term. (2 × 3 = 6 marks)</h3>';
+      m.terms.forEach(x=>{n++;html+=`<div class="q" data-answer="${esc(x[1])}"><p>${n}. ${x[0]}</p><input type="text" name="q${n}"><div class="answer">Model answer: ${x[1]}</div></div>`});html+=`</div><button class="check" type="submit">Check my answers</button><div id="result"></div></form>`;
+      const paper=document.getElementById('paper');paper.innerHTML=html;paper.className='show';paper.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('quiz').onsubmit=e=>check(e,m);
+    }
+    function norm(v){return v.toLowerCase().replace(/[.’'\-]/g,'').replace(/\s+/g,' ').trim();}
+    function check(e){e.preventDefault();let score=0;const qs=[...document.querySelectorAll('.q')];qs.forEach(q=>{const input=q.querySelector('input:checked')||q.querySelector('input[type=text]');const ok=norm(input?.value||'')===norm(q.dataset.answer);q.classList.remove('correct','wrong');q.classList.add(ok?'correct':'wrong');q.querySelector('.answer').classList.add('show');if(ok)score++;});const r=document.getElementById('result');r.style.display='block';r.innerHTML=`Your score: ${score} / ${qs.length}. ${score>=7?'Very good — revise the displayed answers once more.':'Review the displayed model answers, then try the model again.'}`;}
+  </script>
+</body>
+</html>
